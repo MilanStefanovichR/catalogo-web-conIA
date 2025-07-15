@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "nombre": "Papayas en almíbar",
+    "categoria": "Productos de papaya",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Mermelada de papaya",
+    "categoria": "Productos de papaya",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Néctar de papaya",
+    "categoria": "Productos de papaya",
+    "precio": 1,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Jarabe de papaya",
+    "categoria": "Productos de papaya",
+    "precio": 3500,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Mermelada mora",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Mermelada alcayota",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 7,
+    "nombre": "Mermelada durazno",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 8,
+    "nombre": "Mermelada damasco",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 9,
+    "nombre": "Mermelada frambuesa",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 10,
+    "nombre": "Mermelada frutilla",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 11,
+    "nombre": "Mermelada ciruela",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 12,
+    "nombre": "Fondos de alcachofa",
+    "categoria": "Conservas",
+    "precio": 7000,
+   "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 13,
+    "nombre": "Espárragos",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 14,
+    "nombre": "Morrón",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 15,
+    "nombre": "Castañas en almíbar",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 16,
+    "nombre": "Puré de castaña",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 17,
+    "nombre": "Choclitos",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 18,
+    "nombre": "Queso de cabra",
+    "categoria": "Otros",
+    "precio": 10000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 19,
+    "nombre": "Huesillos",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  },
+  {
+    "id": 20,
+    "nombre": "Higo relleno con nuez",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png"
+  }
+]

@@ -1,0 +1,347 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0; /* Ajuste: Elimina el padding del body */
+}
+header, main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Ajuste: Mueve el padding aquí para el contenido principal */
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+h1 {
+    color: #2c3e50;
+}
+
+/* Filtros */
+#filtros-categoria button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#filtros-categoria button:hover, #filtros-categoria button.active {
+    background-color: #2980b9;
+}
+
+/* Catálogo de Productos */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px; /* Ajuste: Padding general del producto */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.producto:hover {
+    transform: translateY(-5px);
+}
+.producto img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.producto h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+.producto .precio {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.btn-agregar {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+.btn-agregar:hover {
+    background-color: #27ae60;
+}
+
+
+/* --- ESTILOS ADICIONALES --- */
+
+/* Botón Flotante del Carrito */
+.floating-cart-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3498db;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 999;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Vista Modal del Carrito */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none; /* Se cambia a flex con JS para mostrar */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: none;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    justify-content: center;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-top: 0;
+}
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+.carrito-item:last-child {
+    border-bottom: none;
+}
+.total {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: right;
+    margin-top: 15px;
+}
+
+#btn-comprar {
+    background-color: #25D366; /* Color de WhatsApp */
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+#btn-comprar:hover {
+    background-color: #1DAE51;
+}
+
+/* Notificaciones (Toast) */
+#notificacion-container {
+    position: fixed;
+    bottom: 90px; /* Un poco más arriba para no chocar con el botón del carrito */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}
+
+.toast {
+    background-color: #2c3e50; /* Un color oscuro y elegante */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo para el botón de vaciar carrito */
+.btn-vaciar {
+    background-color: #e74c3c; /* Un color rojo para la acción de borrar */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-vaciar:hover {
+    background-color: #c0392b;
+}
+
+/* Estilo para el botón de confirmación en el modal */
+.btn-confirmacion {
+    background-color: #3498db; /* Un color azul, similar a los filtros */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-confirmacion:hover {
+    background-color: #2980b9;
+}
+
+/* ESTILOS PARA LA CANTIDAD DEL PRODUCTO (FLECHAS VISIBLES) */
+.producto-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Ajuste: Espacio entre el input y el botón */
+    margin-top: 5px; /* Ajuste: Margen superior para separarlo del precio */
+}
+
+.producto-cantidad {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* --- Estilos para el Footer (Agregados y Ajustados) --- */
+footer {
+    background-color: #2c3e50; /* Color oscuro similar al header o notificaciones */
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 20px; /* Ajuste: Espacio para separarlo del contenido principal */
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer-content a {
+    color: #3498db; /* Un azul para los enlaces, similar a los botones */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: #2980b9;
+}
+
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    color: white; /* Iconos blancos */
+    font-size: 28px; /* Tamaño de los iconos */
+    margin: 0 15px; /* Espacio entre iconos */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #3498db; /* Cambia de color al pasar el mouse */
+}
+#btn-volver-menu {
+    background-color: #25D366; /* Color de WhatsApp */
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex; /* Para alinear el icono y el texto */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+#btn-volver-menu:hover {
+    background-color: #1DAE51;
+}
