@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             productoDiv.classList.add('producto');
             productoDiv.innerHTML = `
                 <h3>${producto.nombre}</h3>
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <p class="precio">Precio: ${formatCLP(producto.precio)}</p>
+                <img src="${producto.imagen}" alt="${producto.nombre}"> 
+                <p class="producto-descripcion">${producto.descripcionCorta || ''}</p> 
                 <div class="producto-acciones">
                     <input type="number" value="1" min="1" class="producto-cantidad" data-id="${producto.id}">
                     <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
@@ -78,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
             catalogoProductos.appendChild(productoDiv);
         });
     }
-
+// se usara el precio en otra ocacion ahora es solo para mostar los productos 
+// <p class="precio">Precio: ${formatCLP(producto.precio)}</p>
     function renderizarFiltros() {
         if (productos.length === 0) {
             console.warn("No hay productos cargados para renderizar filtros.");
@@ -105,12 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 carritoItemDiv.classList.add('carrito-item');
                 carritoItemDiv.innerHTML = `
                     <span>${item.nombre} (x${item.cantidad})</span>
-                    <span>${formatCLP(item.precio * item.cantidad)}</span>
+                    
                 `;
+                //<span>${formatCLP(item.precio * item.cantidad)}</span>
                 carritoItems.appendChild(carritoItemDiv);
             });
         }
-        actualizarTotal();
+        //actualizarTotal();
         actualizarContadorCarrito();
     }
 
@@ -148,10 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
         carrito.forEach(item => {
-            mensaje += `Producto: ${item.nombre}\nCantidad: ${item.cantidad}`;
+            mensaje += `${item.nombre} || Cantidad: ${item.cantidad}\n`;
         });
-        const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-        mensaje += `\nTOTAL DEL PEDIDO: ${formatCLP(total)}`;
+        //const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+        //mensaje += `\nTOTAL DEL PEDIDO: ${formatCLP(total)}`;
         const urlWhatsApp = `https://wa.me/${TU_NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
         window.open(urlWhatsApp, '_blank');

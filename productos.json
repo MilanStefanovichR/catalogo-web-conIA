@@ -1,142 +1,186 @@
 [
   {
-    "id": 1,
-    "nombre": "Papayas en almíbar",
-    "categoria": "Productos de papaya",
-    "precio": 7000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 2,
-    "nombre": "Mermelada de papaya",
-    "categoria": "Productos de papaya",
-    "precio": 7000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
     "id": 3,
-    "nombre": "Néctar de papaya",
+    "nombre": "Néctar de papaya 300ML",
     "categoria": "Productos de papaya",
     "precio": 1,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso nectar de papaya natural"
+  },
+  {
+    "id": 21,
+    "nombre": "Néctar de papaya 475ML",
+    "categoria": "Productos de papaya",
+    "precio": 1,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso nectar de papaya natural"
+  },
+  {
+    "id": 22,
+    "nombre": "Néctar de papaya 1 Litro",
+    "categoria": "Productos de papaya",
+    "precio": 1,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso nectar de papaya natural"
   },
   {
     "id": 4,
     "nombre": "Jarabe de papaya",
     "categoria": "Productos de papaya",
     "precio": 3500,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso jarabe de papaya, ideal para postres y más"
   },
   {
-    "id": 5,
-    "nombre": "Mermelada mora",
-    "categoria": "Conservas",
-    "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "id": 1,
+    "nombre": "Papayas en almíbar",
+    "categoria": "Productos de papaya",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Deliciosa papaya en almibar"
+  },
+  {
+    "id": 2,
+    "nombre": "Mermelada de papaya",
+    "categoria": "Mermeladas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermeladas casera con trozos de fruta"
   },
   {
     "id": 6,
     "nombre": "Mermelada alcayota",
-    "categoria": "Conservas",
+    "categoria": "Mermeladas",
     "precio": 7000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 7,
-    "nombre": "Mermelada durazno",
-    "categoria": "Conservas",
-    "precio": 7000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
   },
   {
     "id": 8,
     "nombre": "Mermelada damasco",
-    "categoria": "Conservas",
+    "categoria": "Mermeladas",
     "precio": 7000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
+  },
+  {
+    "id": 7,
+    "nombre": "Mermelada durazno",
+    "categoria": "Mermeladas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
   },
   {
     "id": 9,
     "nombre": "Mermelada frambuesa",
-    "categoria": "Conservas",
+    "categoria": "Mermeladas",
     "precio": 7000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
   },
   {
     "id": 10,
     "nombre": "Mermelada frutilla",
-    "categoria": "Conservas",
+    "categoria": "Mermeladas",
     "precio": 7000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
+  },
+  {
+    "id": 5,
+    "nombre": "Mermelada mora",
+    "categoria": "Mermeladas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
   },
   {
     "id": 11,
     "nombre": "Mermelada ciruela",
-    "categoria": "Conservas",
+    "categoria": "Mermeladas",
     "precio": 7000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 12,
-    "nombre": "Fondos de alcachofa",
-    "categoria": "Conservas",
-    "precio": 7000,
-   "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 13,
-    "nombre": "Espárragos",
-    "categoria": "Conservas",
-    "precio": 7000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 14,
-    "nombre": "Morrón",
-    "categoria": "Conservas",
-    "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Mermelada casera con trozos de fruta"
   },
   {
     "id": 15,
     "nombre": "Castañas en almíbar",
     "categoria": "Conservas",
     "precio": 8000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 16,
-    "nombre": "Puré de castaña",
-    "categoria": "Conservas",
-    "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Deliciosas castañas en almibar"
   },
   {
     "id": 17,
     "nombre": "Choclitos",
     "categoria": "Conservas",
     "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": ""
   },
   {
-    "id": 18,
-    "nombre": "Queso de cabra",
-    "categoria": "Otros",
-    "precio": 10000,
-    "imagen": "assets/imagen-1.png"
-  },
-  {
-    "id": 19,
-    "nombre": "Huesillos",
+    "id": 13,
+    "nombre": "Espárragos",
     "categoria": "Conservas",
-    "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": ""
+  },
+  {
+    "id": 12,
+    "nombre": "Fondos de alcachofa",
+    "categoria": "Conservas",
+    "precio": 7000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": ""
   },
   {
     "id": 20,
     "nombre": "Higo relleno con nuez",
     "categoria": "Conservas",
     "precio": 8000,
-    "imagen": "assets/imagen-1.png"
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Deliciosos higos rellenos con nueces"
+  },
+  {
+    "id": 19,
+    "nombre": "Huesillos",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Deliciosos huesillos al jugo"
+  },
+  {
+    "id": 23,
+    "nombre": "Manjar",
+    "categoria": "Conservas",
+    "precio": 1,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso manjarn casero hecho con leche de cabra"
+  },
+  {
+    "id": 14,
+    "nombre": "Morrón",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": ""
+  },
+  {
+    "id": 16,
+    "nombre": "Puré de castaña",
+    "categoria": "Conservas",
+    "precio": 8000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso puré de castañas"
+  },
+  {
+    "id": 18,
+    "nombre": "Queso de cabra",
+    "categoria": "Otros",
+    "precio": 10000,
+    "imagen": "assets/imagen-1.png",
+    "descripcionCorta": "Delicioso queso de cabra artensal"
   }
 ]

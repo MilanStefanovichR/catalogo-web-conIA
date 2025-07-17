@@ -1,26 +1,46 @@
 /* Estilos Generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Adjusted from #f5f5f5 for consistency */
     color: #333;
     margin: 0;
     padding: 0; /* Ajuste: Elimina el padding del body */
-}
-header, main {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px; /* Ajuste: Mueve el padding aquí para el contenido principal */
+    display: flex; /* Añadido para sticky footer */
+    flex-direction: column; /* Añadido para sticky footer */
+    min-height: 100vh; /* Añadido para sticky footer */
 }
 header {
-    text-align: center;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho del header */
+    margin: 0 auto;    /* Centra el header horizontalmente */
+    /* ... otras propiedades ... */
+}
+
+main {
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho del contenido principal */
+    margin: 0 auto;    /* Centra el contenido principal horizontalmente */
+    /* ... otras propiedades ... */
 }
 h1 {
     color: #2c3e50;
+    font-size: 2.5em; /* Tamaño por defecto para pantallas más grandes */
+}
+
+/* Media Query para H1 en pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em; /* Tamaño de fuente más pequeño para móviles */
+    }
 }
 
 /* Filtros */
+#filtros-categoria {
+    display: flex; /* Añadido para envolver botones */
+    flex-wrap: wrap; /* Añadido para envolver botones */
+    justify-content: center; /* Añadido para centrar botones */
+    margin-bottom: 20px; /* Añadido para espacio debajo de los filtros */
+}
 #filtros-categoria button {
     background-color: #3498db;
     color: white;
@@ -30,6 +50,7 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    flex-shrink: 0; /* Añadido para evitar que los botones se encojan */
 }
 #filtros-categoria button:hover, #filtros-categoria button.active {
     background-color: #2980b9;
@@ -80,6 +101,31 @@ h1 {
 }
 .btn-agregar:hover {
     background-color: #27ae60;
+}
+
+/* Media Query para el Catálogo y Productos en pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .catalogo {
+        grid-template-columns: 1fr; /* Una sola columna para móviles */
+        padding: 0 10px; /* Añade un poco de padding a los lados del catálogo */
+    }
+
+    .producto {
+        padding: 15px; /* Aumenta el padding para que no se vea tan apretado */
+    }
+
+    .producto img {
+        height: 200px; /* Aumenta la altura de la imagen para que se vea mejor en móviles */
+        object-fit: contain; /* Asegura que la imagen completa sea visible */
+    }
+
+    .producto h3 {
+        font-size: 1.5em; /* Haz el título del producto más grande para que sea más legible */
+    }
+
+    .producto .precio {
+        font-size: 1.2em; /* También el precio más grande */
+    }
 }
 
 
@@ -281,6 +327,13 @@ h1 {
     text-align: center;
 }
 
+/* Estilo para la descripción del producto (NUEVO) */
+.producto-descripcion {
+    font-size: 0.9em; /* Un poco más pequeño que el texto normal */
+    color: #666; /* Un gris más suave */
+    margin: 5px 0 10px 0; /* Margen superior e inferior para separarlo del nombre y la imagen */
+}
+
 /* --- Estilos para el Footer (Agregados y Ajustados) --- */
 footer {
     background-color: #2c3e50; /* Color oscuro similar al header o notificaciones */
@@ -313,18 +366,38 @@ footer {
 
 .social-links {
     margin: 15px 0;
+    /* Para centrar los enlaces si hay varios */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que los enlaces se envuelvan en pantallas pequeñas */
 }
 
 .social-links a {
-    color: white; /* Iconos blancos */
-    font-size: 28px; /* Tamaño de los iconos */
-    margin: 0 15px; /* Espacio entre iconos */
+    color: white; /* Iconos y texto blancos por defecto */
+    /* REMUEVE O COMENTA esta línea: font-size: 28px; */
+    margin: 0 15px; /* Espacio entre los enlaces */
+    text-decoration: none; /* Asegura que no haya subrayado */
     transition: color 0.3s ease;
+    display: inline-flex; /* Usa flexbox para alinear texto e icono */
+    align-items: center; /* Centra verticalmente el texto y el icono */
+    gap: 8px; /* Espacio entre el texto y el icono */
 }
+
 
 .social-links a:hover {
     color: #3498db; /* Cambia de color al pasar el mouse */
 }
+.social-links a .social-link-text {
+    font-size: 0.9em; /* Este es el tamaño que deseas, como los párrafos del footer */
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+
+/* NUEVO: Estilo para los iconos dentro del enlace social */
+.social-links a .fab {
+    font-size: 28px; /* Mantiene el tamaño grande para los iconos */
+}
+
+/* Estilo para el botón de volver al menú (NUEVO) */
 #btn-volver-menu {
     background-color: #25D366; /* Color de WhatsApp */
     color: white;
