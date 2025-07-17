@@ -9,28 +9,55 @@ body {
     flex-direction: column; /* Añadido para sticky footer */
     min-height: 100vh; /* Añadido para sticky footer */
 }
-header {
+header { /* Separated header from main for explicit padding and flexbox context */
     width: 100%;
-    max-width: 1200px; /* Limita el ancho del header */
-    margin: 0 auto;    /* Centra el header horizontalmente */
-    /* ... otras propiedades ... */
-}
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Ajuste: Mueve el padding aquí para el contenido principal */
+    /* text-align: center; <-- Puedes eliminar esta línea si la tienes, ya no será necesaria con flexbox */
+    margin-bottom: 20px;
 
+    /* Nuevos estilos para centrar el logo y el H1 */
+    display: flex; /* Convierte el header en un contenedor flexbox */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    justify-content: center; /* Centra horizontalmente el logo y el h1 */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 15px; /* Espacio entre el logo y el h1 */
+}
 main {
     width: 100%;
-    max-width: 1200px; /* Limita el ancho del contenido principal */
-    margin: 0 auto;    /* Centra el contenido principal horizontalmente */
-    /* ... otras propiedades ... */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1; /* Esta es la clave: hace que el main ocupe todo el espacio disponible */
 }
+/* Estilo para el logo */
+.header-logo {
+    height: 80px; /* Tamaño del logo para pantallas grandes */
+    width: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; /* Espacio a la derecha del logo cuando está al lado del h1 */
+}
+
+/* Ajuste para el h1 (para que los márgenes no interfieran con flexbox) */
 h1 {
     color: #2c3e50;
     font-size: 2.5em; /* Tamaño por defecto para pantallas más grandes */
+    margin: 0; /* Elimina los márgenes por defecto del h1 para un mejor control con flexbox */
 }
 
 /* Media Query para H1 en pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Apila el logo y el h1 en móviles */
+        text-align: center; /* Vuelve a centrar el texto si se apilan */
+    }
+    .header-logo {
+        height: 60px; /* Tamaño más pequeño del logo para móviles */
+        margin-right: 0; /* Elimina el margen a la derecha cuando están apilados */
+        margin-bottom: 10px; /* Añade margen debajo del logo cuando están apilados */
+    }
     h1 {
-        font-size: 1.8em; /* Tamaño de fuente más pequeño para móviles */
+        font-size: 1.8em; /* Tamaño de fuente más pequeño para el título en móviles */
     }
 }
 
@@ -40,6 +67,7 @@ h1 {
     flex-wrap: wrap; /* Añadido para envolver botones */
     justify-content: center; /* Añadido para centrar botones */
     margin-bottom: 20px; /* Añadido para espacio debajo de los filtros */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible en el header */
 }
 #filtros-categoria button {
     background-color: #3498db;
