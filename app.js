@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito.forEach(item => {
             mensaje += `${item.nombre} || Cantidad: ${item.cantidad}\n`;
         });
-        mensaje += `\nRegion: ${regionSeleccionada}\n`;
+        mensaje += `\nRegión: ${regionSeleccionada}\n`;
         mensaje += `\nComuna: ${comunaSeleccionada}\n`;
 
         //const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
