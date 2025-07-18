@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const TU_NUMERO_WHATSAPP = '56961422962';
     let productos = [];
     let carrito = [];
+    let regionesComunasData = [];
 
     // --- Función de ayuda para formatear precios en CLP ---
     function formatCLP(amount) {
@@ -29,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoContador = document.getElementById('carrito-contador');
     const btnComprar = document.getElementById('btn-comprar');
     const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
+    const regionSelect = document.getElementById('region-select');
+    const comunaSelect = document.getElementById('comuna-select');
 
     // --- ELEMENTOS DEL DOM PARA EL MODAL DE CONFIRMACIÓN ---
     const modalConfirmacion = document.getElementById('modal-confirmacion');
@@ -37,12 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- FUNCIONES DEL MODAL DE CARRITO ---
     function abrirModal() {
-        renderizarCarrito();
         modalCarrito.classList.add('active');
-    }
+        actualizarCarritoUI();
+        poblarRegiones();
+    } // <--- Cierre corregido aquí
 
-    function cerrarModal() {
+    function cerrarModal() { // <--- Función fuera de abrirModal
         modalCarrito.classList.remove('active');
+        regionSelect.value = '';
+        comunaSelect.innerHTML = '<option value="">Selecciona tu Comuna</option>';
+        comunaSelect.disabled = true;
     }
 
     // --- FUNCIONES DEL MODAL DE CONFIRMACIÓN ---
@@ -61,6 +68,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- FUNCIONES PRINCIPALES ---
+
+    // --- NUEVAS FUNCIONES PARA REGIÓN/COMUNA (Colocadas aquí para un ámbito correcto) ---
+    async function cargarRegionesComunas() {
+        try {
+            const response = await fetch('regiones_comunas.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            regionesComunasData = await response.json();
+            poblarRegiones(); // Llama a la función para llenar el select de regiones
+        } catch (error) {
+            console.error('Error al cargar regiones y comunas:', error);
+            mostrarNotificacion('Error al cargar la información de regiones y comunas.', 'error');
+        }
+    }
+
+    function poblarRegiones() {
+        regionSelect.innerHTML = '<option value="">Selecciona tu Región</option>';
+        regionesComunasData.forEach(region => {
+            const option = document.createElement('option');
+            option.value = region.nombre;
+            option.textContent = region.nombre;
+            regionSelect.appendChild(option);
+        });
+        comunaSelect.innerHTML = '<option value="">Selecciona tu Comuna</option>'; // Limpiar comunas
+        comunaSelect.disabled = true; // Deshabilitar comuna hasta que se seleccione región
+    }
+
+    function poblarComunas(regionNombre) {
+        comunaSelect.innerHTML = '<option value="">Selecciona tu Comuna</option>';
+        comunaSelect.disabled = true;
+        if (regionNombre) {
+            const regionSeleccionada = regionesComunasData.find(region => region.nombre === regionNombre);
+            if (regionSeleccionada) {
+                regionSeleccionada.comunas.forEach(comuna => {
+                    const option = document.createElement('option');
+                    option.value = comuna;
+                    option.textContent = comuna;
+                    comunaSelect.appendChild(option);
+                });
+                comunaSelect.disabled = false;
+            }
+        }
+    }
+    // --- FIN NUEVAS FUNCIONES PARA REGIÓN/COMUNA ---
+
+
     function renderizarProductos(productosFiltrados) {
         catalogoProductos.innerHTML = '';
         productosFiltrados.forEach(producto => {
@@ -68,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             productoDiv.classList.add('producto');
             productoDiv.innerHTML = `
                 <h3>${producto.nombre}</h3>
-                <img src="${producto.imagen}" alt="${producto.nombre}"> 
-                <p class="producto-descripcion">${producto.descripcionCorta || ''}</p> 
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <p class="producto-descripcion">${producto.descripcionCorta || ''}</p>
                 <div class="producto-acciones">
                     <input type="number" value="1" min="1" class="producto-cantidad" data-id="${producto.id}">
                     <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
@@ -78,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             catalogoProductos.appendChild(productoDiv);
         });
     }
-// se usara el precio en otra ocacion ahora es solo para mostar los productos 
+// se usara el precio en otra ocacion ahora es solo para mostar los productos
 // <p class="precio">Precio: ${formatCLP(producto.precio)}</p>
     function renderizarFiltros() {
         if (productos.length === 0) {
@@ -106,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 carritoItemDiv.classList.add('carrito-item');
                 carritoItemDiv.innerHTML = `
                     <span>${item.nombre} (x${item.cantidad})</span>
-                    
+
                 `;
                 //<span>${formatCLP(item.precio * item.cantidad)}</span>
                 carritoItems.appendChild(carritoItemDiv);
@@ -143,15 +197,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function enviarPedidoWhatsApp() {
-        if (carrito.length === 0) {
-            alert('Tu carrito está vacío. Agrega productos antes de enviar el pedido.');
+        const regionSeleccionada = regionSelect.value; // <--- Declaración movida aquí
+        const comunaSeleccionada = comunaSelect.value; // <--- Declaración movida aquí
+
+        // <--- Validación movida aquí
+        if (!regionSeleccionada) {
+            mostrarNotificacion('Por favor, selecciona tu Región. Es un campo obligatorio.', 'error');
+            regionSelect.focus();
             return;
+        }
+        if (!comunaSeleccionada) {
+            mostrarNotificacion('Por favor, selecciona tu Comuna. Es un campo obligatorio.', 'error');
+            comunaSelect.focus();
+            return;
+        }
+        // <--- Fin de validación movida
+
+        if (carrito.length === 0) {
+            mostrarNotificacion('Tu carrito está vacío. Agrega productos antes de enviar el pedido.', 'error'); // Corregido para usar mostrarNotificacion
+            return; // Detener si el carrito está vacío
         }
 
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
         carrito.forEach(item => {
             mensaje += `${item.nombre} || Cantidad: ${item.cantidad}\n`;
         });
+        mensaje += `\nRegion: ${regionSeleccionada}\n`;
+        mensaje += `\nComuna: ${comunaSeleccionada}\n`;
+
         //const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
         //mensaje += `\nTOTAL DEL PEDIDO: ${formatCLP(total)}`;
         const urlWhatsApp = `https://wa.me/${TU_NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
@@ -165,9 +238,15 @@ document.addEventListener('DOMContentLoaded', () => {
         abrirModalConfirmacion();
     }
 
-    function mostrarNotificacion(mensaje) {
+    function mostrarNotificacion(mensaje, tipo = 'info') { // Agregado tipo para consistencia
         const toast = document.createElement('div');
         toast.classList.add('toast');
+        // Agregado estilo para diferentes tipos de notificación
+        if (tipo === 'error') {
+            toast.style.backgroundColor = '#e74c3c';
+        } else if (tipo === 'success') {
+            toast.style.backgroundColor = '#2ecc71';
+        }
         toast.innerText = mensaje;
 
         notificacionContainer.appendChild(toast);
@@ -180,14 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.addEventListener('transitionend', () => {
                 toast.remove();
             }, { once: true });
-        }, 3000);
+        }, 3000); // Duración de 3 segundos
     }
 
     function vaciarCarrito() {
         if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
             carrito = [];
             renderizarCarrito();
-            mostrarNotificacion('🗑️ Carrito vaciado con éxito');
+            mostrarNotificacion('🗑️ Carrito vaciado con éxito', 'info'); // Agregado tipo
         }
     }
 
@@ -207,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error al cargar los productos:', error);
             catalogoProductos.innerHTML = '<p>Error al cargar los productos. Por favor, intente de nuevo más tarde.</p>';
-            mostrarNotificacion('❌ Error al cargar productos.');
+            mostrarNotificacion('❌ Error al cargar productos.', 'error'); // Agregado tipo
         });
 
 
@@ -232,6 +311,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- NUEVO: Listener para el cambio en el select de regiones ---
+    regionSelect.addEventListener('change', (event) => {
+        poblarComunas(event.target.value);
+    });
+
     btnComprar.addEventListener('click', enviarPedidoWhatsApp);
 
     // --- LISTENERS PARA EL MODAL DE CARRITO ---
@@ -249,4 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cerrarModalConfirmacion();
         window.location.reload();
     });
+
+    // --- Cargar regiones y comunas al iniciar la app (Movido aquí para correcta inicialización) ---
+    cargarRegionesComunas();
 });
