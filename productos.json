@@ -117,7 +117,7 @@
     "categoria": "Conservas",
     "precio": 8000,
     "imagen": "assets/imagen-1.png",
-    "descripcionCorta": ""
+    "descripcionCorta": "Deliciosos choclitos en conserva"
   },
   {
     "id": 13,
@@ -125,7 +125,7 @@
     "categoria": "Conservas",
     "precio": 7000,
     "imagen": "assets/imagen-1.png",
-    "descripcionCorta": ""
+    "descripcionCorta": "Deliciosos esparragos en conserva"
   },
   {
     "id": 12,
@@ -133,7 +133,7 @@
     "categoria": "Conservas",
     "precio": 7000,
     "imagen": "assets/imagen-1.png",
-    "descripcionCorta": ""
+    "descripcionCorta": "Deliciosos fondos de alcachofa"
   },
   {
     "id": 20,
@@ -165,7 +165,7 @@
     "categoria": "Conservas",
     "precio": 8000,
     "imagen": "assets/imagen-1.png",
-    "descripcionCorta": ""
+    "descripcionCorta": "Deliciosos morron en conserva"
   },
   {
     "id": 16,
@@ -178,7 +178,7 @@
   {
     "id": 18,
     "nombre": "Queso de cabra",
-    "categoria": "Otros",
+    "categoria": "Productos lacteos de cabra",
     "precio": 10000,
     "imagen": "assets/imagen-1.png",
     "descripcionCorta": "Delicioso queso de cabra artensal"
